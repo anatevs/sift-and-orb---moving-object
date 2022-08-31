@@ -8,17 +8,27 @@ Created on Fri Dec 17 19:33:43 2021
 """
 using of my "watching_orb"  function to tracking object in a sky
 """
+"""
+Add a sort of GUI to set a coordinates of object in a first frame by using 
+a mouse pointer
+!! but we still have to set a delt_xy - shift of object to next frame (in 
+current test videos a speed of objects is not so big and we will set delt_xy
+as [0, 0])
+
+"""
 
 
 import cv2
 from fun_orb import orb_watching
 
 
-fn_vid = 'video_plane.mp4'
+from os import path
+fld_rel = '\\videos-to-test\\'
+fld = path.dirname(__file__)
 
-obj_xy = [ [325, 290, 355, 302] ]
+fn_vid = 'Pexels Videos 1631994.mp4'
+
 edge_w = 50
-smpl_xy = [ [obj_xy[0][0] - edge_w, obj_xy[0][1] - edge_w, obj_xy[0][2] + edge_w, obj_xy[0][3] + edge_w] ]
 delt_xy = [ [0, 0] ]
 
 test_mode = 1
@@ -45,6 +55,10 @@ while cap.isOpened():
         count = count + 1
         if count == 1:
             im_in = fr_curr
+            
+            # picking up a sample in a 1st frame
+            r = cv2.selectROI(im_in, showCrosshair=False)
+            smpl_xy = [ [r[0] - edge_w, r[1] - edge_w, r[0]+r[2] + edge_w, r[1]+r[3] + edge_w] ]
             smpls = [ im_in[smpl_xy[0][1]:smpl_xy[0][3], smpl_xy[0][0]:smpl_xy[0][2]] ]
             
             # ORB creating
