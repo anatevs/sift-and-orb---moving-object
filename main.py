@@ -28,14 +28,14 @@ from os import path
 fld_rel = '\\videos-to-test\\'
 fld = path.dirname(__file__)
 
-fn_vid = 'Pexels Videos 1631994.mp4'
+fn_vid = 'video.mp4'
 
 edge_w = 50
 delt_xy = [ [0, 0] ]
 
 test_mode = 1
 
-cap = cv2.VideoCapture(fn_vid)
+cap = cv2.VideoCapture(fld + fld_rel + fn_vid)
 if not cap.isOpened():
     print('cant open file')
 
