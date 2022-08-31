@@ -9,7 +9,7 @@ Created on Fri Dec 17 19:33:43 2021
 using of my "watching_orb"  function to tracking object in a sky
 """
 """
-Add a sort of GUI to set a coordinates of object in a first frame by using 
+With a sort of GUI to set a coordinates of object in a first frame by using 
 a mouse pointer
 !! but we still have to set a delt_xy - shift of object to next frame (in 
 current test videos a speed of objects is not so big and we will set delt_xy
